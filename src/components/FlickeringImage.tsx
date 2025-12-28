@@ -8,7 +8,7 @@ interface FlickeringImageProps {
 }
 
 function FlickeringImage({ image1, image2, alt = 'Somali Surfer' }: FlickeringImageProps) {
-  const [currentImage, setCurrentImage] = useState(image2) // Second image is main/default
+  const [showImage1, setShowImage1] = useState(false) // Second image is main/default
   const [isFlickering, setIsFlickering] = useState(false)
 
   useEffect(() => {
@@ -27,10 +27,10 @@ function FlickeringImage({ image1, image2, alt = 'Somali Surfer' }: FlickeringIm
       sequence.forEach(({ delay, duration }) => {
         setTimeout(() => {
           setIsFlickering(true)
-          setCurrentImage(image1)
+          setShowImage1(true)
           
           setTimeout(() => {
-            setCurrentImage(image2)
+            setShowImage1(false)
             setIsFlickering(false)
           }, duration)
         }, delay)
@@ -43,14 +43,21 @@ function FlickeringImage({ image1, image2, alt = 'Somali Surfer' }: FlickeringIm
     }, 6000)
 
     return () => clearInterval(flickerInterval)
-  }, [image1, image2])
+  }, [])
 
   return (
     <div className="flickering-image-container">
       <img 
-        src={currentImage} 
+        src={image2} 
         alt={alt}
-        className={`flickering-image ${isFlickering ? 'flicker' : ''}`}
+        className={`flickering-image flickering-image-main ${isFlickering ? 'flicker' : ''}`}
+        style={{ opacity: showImage1 ? 0 : 1 }}
+      />
+      <img 
+        src={image1} 
+        alt={alt}
+        className={`flickering-image flickering-image-alt ${isFlickering ? 'flicker' : ''}`}
+        style={{ opacity: showImage1 ? 1 : 0 }}
       />
     </div>
   )
