@@ -1,0 +1,38 @@
+.flickering-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.flickering-image {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  transition: opacity 0.05s linear;
+  opacity: 1;
+}
+
+.flickering-image.flicker {
+  animation: flickerEffect 0.05s linear;
+}
+
+@keyframes flickerEffect {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
