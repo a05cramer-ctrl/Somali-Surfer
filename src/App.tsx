@@ -29,7 +29,7 @@ function App() {
       </div>
       <div className="social-buttons">
         <a 
-          href="https://twitter.com" 
+          href="https://x.com/SomaliSurfer" 
           target="_blank" 
           rel="noopener noreferrer"
           className="twitter-button"

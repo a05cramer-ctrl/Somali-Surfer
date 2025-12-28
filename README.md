@@ -36,3 +36,4 @@ npm run preview
 - **Vite** - Byggverktyg och utvecklingsserver
 - **TypeScript** - Typat JavaScript
 
+
