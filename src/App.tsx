@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import ShootingStars from './components/ShootingStars'
 import FlickeringImage from './components/FlickeringImage'
 import SpaceSurfer from './components/SpaceSurfer'
@@ -6,6 +7,18 @@ import image2 from './ChatGPT_Image_28_dec._2025_21_47_16-removebg-preview.png'
 import './App.css'
 
 function App() {
+  const [copied, setCopied] = useState(false)
+  const walletAddress = '6hdcsQ5sMihzGPQmzSX71ApYRpdXCzG5f6Na1nDDbonk'
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(walletAddress)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy:', err)
+    }
+  }
 
   return (
     <div className="App">
@@ -40,6 +53,16 @@ function App() {
           </svg>
           Twitter
         </a>
+        <div className="ca-section">
+          <button 
+            onClick={handleCopy}
+            className={`copy-address ${copied ? 'copied' : ''}`}
+            title="Click to copy"
+          >
+            {walletAddress}
+            {copied && <span className="copy-feedback">Copied!</span>}
+          </button>
+        </div>
       </div>
     </div>
   )
