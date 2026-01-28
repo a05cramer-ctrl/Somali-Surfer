@@ -8,7 +8,7 @@ import './App.css'
 
 function App() {
   const [copied, setCopied] = useState(false)
-  const walletAddress = '6hdcsQ5sMihzGPQmzSX71ApYRpdXCzG5f6Na1nDDbonk'
+  const walletAddress = 'HHDDkdiUw2ERTBnHa9q4kEeaNm4cKuiiNZZxezSspump'
 
   const handleCopy = async () => {
     try {
